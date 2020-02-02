@@ -1,0 +1,132 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void feet_meter_conversion(int& m, double& cm);
+void meter_feet_conversion(int& feet, double& inches);
+void pound_kilograms_conversion(int& kg, double& g);
+void kilogram_pound_conversion(int& lb, double& oz);
+
+main()
+{
+    string choice, restart;
+    int len_choice, weight_choice, m, kg, feet, lbs;
+    double cm, g, inches, oz;
+
+    do {
+        cout<<"Do you want to convert lengths or weights?"<<endl;
+        cin>>choice;
+
+        if (choice == "lengths")
+        {
+            cout<<"Enter (1) to convert from feet and inches to meters and centimeters or (2) from meters and centimeters to feet and inches."<<endl;
+            cin>>len_choice;
+            if (len_choice == 1)
+            {
+                feet_meter_conversion(m, cm);
+            }
+            else if (len_choice == 2)
+            {
+                meter_feet_conversion(feet, inches);
+            }
+        }
+        else if (choice == "weights")
+        {
+            cout<<"Enter (1) to convert from pounds and ounces to kilograms and grams or (2) from kilograms and grams to pounds and ounces."<<endl;
+            cin>>weight_choice;
+            if (weight_choice == 1)
+            {
+                pound_kilograms_conversion(kg, g);
+            }
+            else if (weight_choice == 2)
+            {
+                kilogram_pound_conversion(lbs, oz);
+            }
+        }
+
+        cout<<"Do you want to start again? (yes/no)"<<endl;
+        cin>>restart;
+
+    } while(restart == "yes");
+    return 0;
+}
+
+void feet_meter_conversion(int& m, double& cm)
+{
+    int feet, inches;
+    double feet_inche;
+    cout<<"Enter feet and inches"<<endl<<"Feet: ";
+    cin>>feet;
+    cout<<"Inches: ";
+    cin>>inches;
+
+    feet_inche = inches + (feet * 12);
+    cm = feet_inche * 2.54;
+
+    if (cm > 100)
+    {
+        m = cm/100;
+        cm = cm - (m * 100);
+    }
+    cout<<m<<" meters and "<<cm<<" centimeters"<<endl;
+}
+
+void meter_feet_conversion(int& feet, double& inches)
+{
+    int meters, centimeters,m;
+    double feet_inche, cm;
+    cout<<"Enter meters and centimeeters"<<endl<<"Meters: ";
+    cin>>meters;
+    cout<<"Centimeters: ";
+    cin>>centimeters;
+
+    cm = centimeters + (meters * 100);
+    inches = cm/2.54;
+
+    if (inches > 12)
+    {
+        feet = inches/12;
+        inches = inches - (feet * 12);
+    }
+    cout<<feet<<" feet and "<<inches<<" inches"<<endl;
+}
+
+void pound_kilograms_conversion(int& kg, double& g)
+{
+    int pounds, ounces, kilograms;
+    double grams, oz;
+    cout<<"Enter pounds and ounces"<<endl<<"Pounds: ";
+    cin>>pounds;
+    cout<<"Ounces: ";
+    cin>>ounces;
+
+    oz = ounces + (pounds * 16);
+    grams = oz*28.3495;
+
+    if (grams > 1000)
+    {
+        kilograms = grams/1000;
+        grams = grams - (kilograms * 1000);
+    }
+    cout<<kilograms<<" kilograms and "<<grams<<" grams"<<endl;
+}
+
+void kilogram_pound_conversion(int& lbs, double& oz)
+{
+    int pounds, grams, kilograms;
+    double ounces, g;
+    cout<<"Enter kilograms and grams"<<endl<<"Kilograms: ";
+    cin>>kilograms;
+    cout<<"Grams: ";
+    cin>>grams;
+
+    g = grams + (kilograms * 1000);
+    oz = g/28.3495;
+
+    if (oz > 16)
+    {
+        lbs = oz/16;
+        oz = oz - (lbs * 16);
+    }
+    cout<<lbs<<" pounds and "<<oz<<" ounces"<<endl;
+}
