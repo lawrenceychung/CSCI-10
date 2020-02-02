@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void convertToMPH(double min, double sec);
+void convertToMPH(double kilometers);
+
+main()
+{
+    double kilometers, minutes, seconds;
+
+    cout<<"Enter minutes and seconds per mile"<<endl<<"Minutes: ";
+    cin>> minutes;
+    cout<<"Seconds: ";
+    cin>> seconds;
+
+    cout<<"Enter kilometers per hour"<<endl<<"KPH: ";
+    cin>> kilometers;
+
+    convertToMPH(minutes, seconds);
+    convertToMPH(kilometers);
+
+    return 0;
+}
+
+void convertToMPH(double min, double sec)
+{
+    double mph, hour;
+
+    hour = min/60 + sec/360;
+    mph = 1/hour;
+    cout<<mph<<" MPH"<<endl;
+}
+
+void convertToMPH(double kilometers)
+{
+    double mile;
+
+    mile = kilometers*1.61;
+    cout<<mile<<" MPH"<<endl;
+}
