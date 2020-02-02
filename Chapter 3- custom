@@ -1,1 +1,44 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+  double total,score,avg,high,low;
+  int number_of_scores;
+
+  total = 0;
+  number_of_scores = 0;
+  high = 0;
+  low = 30;
+
+  do
+  {
+    cout<<"Enter a score"<<endl<<"Scores: ";
+    cin>>score;
+    while (score < -1 || score > 30)
+    {
+      cout<<"Please enter a valid score"<<endl<<"Scores: ";
+      cin>>score;
+    }
+    if (high < score)
+    {
+        high = score;
+    }
+    if (score != -1 && low > score)
+    {
+        low = score;
+    }
+    total = total + score;
+    number_of_scores++;
+  } while(score != -1);
+
+  total++;
+  number_of_scores --;
+  avg = total / number_of_scores;
+  cout<<"Average: "<<avg<<endl;
+  cout<<"Max: "<<high<<endl;
+  cout<<"Min: "<<low<<endl;
+
+  return 0;
+}
 
