@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    double artificial_sweetener, weight_mouse, weight_dieter;
+    // amount of artificial sweetener needed to kill the mouse
+    //weight at which dieter will stop dieting
+    const double diet_soda_sweetner = 0.001;
+    int diet_sodas;
+
+    cout<<"Enter amount of artificial sweetener needed to kill the mouse"<<endl<<"Artificial Sweetener: ";
+    cin>>artificial_sweetener;
+    cout<<"Enter the weight of the mouse in grams"<<endl<<"Mouse Weight: ";
+    cin>> weight_mouse;
+    cout<<"Enter the weight at which you will stop dieting in grams"<<endl<<"Stop Dieting Weight: ";
+    cin>> weight_dieter;
+
+    diet_sodas = (weight_dieter * (artificial_sweetener / weight_mouse)) / diet_soda_sweetner;
+
+    cout<<diet_sodas<<" diet sodas will kill you."<<endl;
+
+    return 0;
+}
