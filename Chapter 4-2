@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void triangle(int length_a, int length_b, int length_c, int& p, int & a);
+
+main()
+{
+    int length_a, length_b, length_c,p,a;
+
+    do {
+        cout<<"Enter the length of three sides of a triangle"<<endl<<"Side 1:";
+        cin>>length_a;
+        cout<<"Side 2: ";
+        cin>>length_b;
+        cout<<"Side 3: ";
+        cin>>length_c;
+    } while(length_b + length_a < length_c || length_a + length_c < length_b || length_b + length_c < length_a);
+
+    triangle (length_a, length_b, length_c, p, a);
+    cout<<"Perimeter: "<<p<<endl<<"Area: "<<a;
+
+    return 0;
+}
+
+void triangle(int length_a, int length_b, int length_c, int& p, int & a)
+{
+    int s;
+    p = (length_a + length_b + length_c);
+    s = p/2;
+    a = sqrt((s*(s - length_a))*(s - length_b)*(s - length_c));
+
+}
