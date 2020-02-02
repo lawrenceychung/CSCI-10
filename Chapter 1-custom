@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string day_of_week;
+    int x;
+
+    cout<<"Enter the Day of the Week"<<endl<<"Day: ";
+    cin>>day_of_week;
+
+    if (day_of_week == "Monday" || day_of_week == "Wednesday" || day_of_week == "Friday")
+        {
+            x = 1;
+        }
+    else if (day_of_week == "Tuesday" || day_of_week == "Thursday")
+        {
+            x = 2;
+        }
+    else
+        cout<<"Enjoy your weekend"<<endl;
+
+        switch(x)
+        {
+            case 1:
+                cout<<"CSCI 10 at 1:00, PHIL 11A at 2:15, MATH 12 at 12:45"<<endl;
+                break;
+            case 2:
+                cout<<"PHYS 2 at 12:10, CSCI 10 lab at 2:15"<<endl;
+                break;
+        }
+
+    return 0;
+
+}
