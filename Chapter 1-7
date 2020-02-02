@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    double subject_weight, calories_burned;
+    int mets,time;
+
+    cout<<"Enter subject's weight in pounds"<<endl<<"Subjects Weight: ";
+    cin>>subject_weight;
+    cout<<"Enter the number of METS for an activity"<<endl<<"METS: ";
+    cin>>mets;
+    cout<<"Enter the amount of minutes spent on that activity"<<endl<<"Time: ";
+    cin>>time;
+
+    calories_burned = (0.0175 * mets * (2.2 * subject_weight)) * time;
+
+    cout<<"You have burned "<<calories_burned<<" total calories.";
+
+    return 0;
+
+}
