@@ -1,1 +1,53 @@
-Functions/
+#include <iostream>
+using namespace std;
+
+void inputs(int& hour, int& minute);
+void process(int hour, int minute, int& result, string& time_of_day);
+void output(int result, int minute, string time_of_day, string& restart);
+
+main()
+{
+    int hour, minute, result;
+    string time_of_day, restart;
+
+    do
+    {
+        inputs(hour, minute);
+        process(hour, minute, result, time_of_day);
+        output(result, minute, time_of_day, restart);
+
+    } while(restart == "yes");
+
+
+    return 0;
+}
+
+void inputs(int& hour, int& minute)
+{
+    cout<<"Enter the hour in 24-hour notation"<<endl<<"Hour: ";
+    cin>>hour;
+    cout<<"Enter the minute"<<endl<<"Minute: ";
+    cin>>minute;
+}
+
+void process(int hour, int minute, int& result, string& time_of_day)
+{
+    if (hour > 12)
+    {
+        result = hour - 12;
+        time_of_day = "PM";
+    }
+    else
+    {
+        result = hour;
+        time_of_day = "AM";
+    }
+}
+
+void output(int result, int minute, string time_of_day, string& restart)
+{
+    cout<<result<<":"<<minute<<" "<<time_of_day<< endl;
+    cout<<"Enter yes to restart and no to stop"<<endl<<"Answer: ";
+    cin>> restart;
+}
+
