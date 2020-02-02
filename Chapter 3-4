@@ -1,0 +1,31 @@
+#include<iostream>
+#include<cmath>
+#include<string>
+using namespace std;
+
+string repeat;
+
+int main()
+{
+    do
+    {
+        double mass_one, mass_two, distance, force;
+        const double GRAVITATIONAL_CONSTANT =6.673 * pow(10,-8);
+
+        cout<< "Enter the mass of the first body"<<endl<<"Mass: ";
+        cin>> mass_one;
+        cout<< "Enter the mass of the second body"<<endl<<"Mass: ";
+        cin>> mass_two;
+        cout<< "Enter the distance between the two bodies"<<endl<<"Distance: ";
+        cin>> distance;
+
+        force = (GRAVITATIONAL_CONSTANT * mass_one * mass_two) / pow(distance, 2);
+        cout<< "Gravitational force: "<< force<< "dynes"<< endl;
+
+        cout<< "Would you like to do another calulation? (enter yes/no)"<<endl;
+        cin>> repeat;
+
+    } while (repeat == "yes");
+
+    return 0;
+}
