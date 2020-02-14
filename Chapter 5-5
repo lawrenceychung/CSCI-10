@@ -1,0 +1,120 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void fill_array(int array[], int & count);
+void process(int arraya[], int arrayb[], int arrayc[], int count);
+
+const int CAPACITY = 20;
+
+main()
+{
+    char rerun;
+
+    do
+    {
+        string user_input, user_input_2;
+        int count, counta, countb;
+
+        int a[CAPACITY];
+        int b[CAPACITY];
+        int c[CAPACITY];
+
+        counta = 0;
+        countb = 0;
+
+        for (int i = 0; i < CAPACITY; i++)
+        {
+            a[i] = 0;
+            b[i] = 0;
+            c[i] = 0;
+        }
+
+        cout<<"Enter the first positive integers that is 20 digits or fewer"<<endl;
+        fill_array(a, counta);
+        for (int i = 0; i < counta; i++)
+        {
+            cout<<a[i]<<endl;
+        }
+
+        cout<<"Enter the second positive integer that is 20 digits or fewer"<<endl;
+        fill_array(b, countb);
+
+        for (int i = 0; i < countb; i++)
+        {
+            cout<<b[i]<<endl;
+        }
+
+        if (counta > countb)
+        {
+            count = counta;
+        }
+        else
+        {
+            count = countb;
+        }
+
+        process(a, b, c, count);
+
+        cout<<endl<<"Do you want to do another calculation (Y/N)?"<<endl;
+        cin>>rerun;
+
+        cin.ignore();
+
+    } while (rerun != 'N');
+
+    return 0;
+}
+
+void fill_array(int array[], int & count)
+{
+    char answer;
+    int temp;
+
+    cin.get(answer);
+    while(answer != '\n' && count < CAPACITY)
+    {
+        array[count] = answer - '0';
+        count++;
+        cin.get(answer);
+    }
+
+    int j = (count - 1);
+    int i = 0;
+    while (i < j)
+    {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+
+        i++;
+        j--;
+    }
+}
+
+
+void process(int arraya[], int arrayb[], int arrayc[], int count)
+{
+    for (int i = 0; i < count + 1; i++)
+    {
+        arrayc[i] = arraya[i] + arrayb[i];
+    }
+    for (int i = 0; i < count + 1; i++)
+    {
+        int temp = arrayc[i] / 10;
+        arrayc[i+1] += temp;
+        arrayc[i] = arrayc[i]%10;
+    }
+    if (count + 1 > CAPACITY)
+    {
+        cout<<"integer overflow"<<endl;
+    }
+    else
+    {
+        cout<<"Total Sum: ";
+        for (int i = count; i >= 0; i--)
+        {
+            cout<<arrayc[i];
+        }
+    }
+}
