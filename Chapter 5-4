@@ -1,0 +1,53 @@
+#include<iostream>
+using namespace std;
+
+
+int main(){
+   int integers[50];
+   int amount, i, number;
+   int count = 0;
+   int countb = 0;
+
+   cout<<"How many integers do you want to input(1-50) : "<<endl;
+   cin>>amount;
+
+   cout<<"Enter integers : "<<endl;
+
+   for (i = 0; i < amount; i++)
+   {
+       cin>>integers[i];
+   }
+
+   for (i= 0 ;i < amount; i++)
+   {
+       for (int j = 0;j < amount - i - 1; j++)
+       {
+           if (integers[j] < integers[j+1])
+           {
+               int temp = integers[j];
+               integers[j] = integers[j+1];
+               integers[j+1] = temp;
+           }
+       }
+   }
+
+   cout<<endl<<"N\tCount"<<endl;
+   for (i = 0;i < amount; i++)
+   {
+       number = integers[i];
+       for (int j = 0; j < amount; j++)
+       {
+           if (number == integers[j])
+           {
+               countb++;
+               count = j;
+           }
+       }
+
+       cout<<integers[i]<< "\t"<<countb<<endl;
+       i = count;
+       countb = 0;
+   }
+
+   return 0;
+}
