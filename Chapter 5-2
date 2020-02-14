@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+string removespace (string input, int size);
+
+main()
+{
+    string input, astring;
+    int size;
+    cout<<"Enter a sentence of up to 100 characters."<<endl;
+    getline(cin,input);
+
+    size = input.length();
+
+    astring = removespace(input, size);
+    for (int i = 0; i < size; i++)
+    {
+        astring [i] = tolower(astring[i]);
+    }
+    astring[0] = toupper(astring[0]);
+
+    cout<<astring<<endl;
+
+    return 0;
+}
+
+string removespace (string input, int size)
+{
+    int rerun;
+
+    for (int i = 0; i < size; i++)
+    {
+        do
+        {
+            if (input[i] == ' ' && input[i + 1] == ' ' || input[i] == '\n')
+            {
+                input.erase(input.begin() + i);
+                rerun = 1;
+            }
+            else
+            {
+                rerun = 0;
+            }
+        } while (rerun == 1);
+
+    }
+    return input;
+}
