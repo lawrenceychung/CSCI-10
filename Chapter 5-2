@@ -1,49 +1,40 @@
-#include <iostream>
-#include <string>
+#include<iostream>
 using namespace std;
 
-string removespace (string input, int size);
+void deleteRepeats(char* a, int& size);
 
 main()
 {
-    string input, astring;
-    int size;
-    cout<<"Enter a sentence of up to 100 characters."<<endl;
-    getline(cin,input);
 
-    size = input.length();
+    char a[10];
+    a[0] = 'a';
+    a[1] = 'b';
+    a[2] = 'a';
+    a[3] = 'c';
 
-    astring = removespace(input, size);
-    for (int i = 0; i < size; i++)
+    int size = 4;
+
+    deleteRepeats (a, size);
+
+    for (int i =  0; i < size; i++)
     {
-        astring [i] = tolower(astring[i]);
+        cout<<a[i]<<endl;
     }
-    astring[0] = toupper(astring[0]);
-
-    cout<<astring<<endl;
-
+    cout <<"Size: "<<size<<endl;
     return 0;
 }
 
-string removespace (string input, int size)
+void deleteRepeats(char* a, int& size)
 {
-    int rerun;
-
     for (int i = 0; i < size; i++)
     {
-        do
+        for (int j = i + 1; j < size; j++)
         {
-            if (input[i] == ' ' && input[i + 1] == ' ' || input[i] == '\n')
+            if (a[i] == a[j])
             {
-                input.erase(input.begin() + i);
-                rerun = 1;
+                a[j] = a[size-1];
+                size--;
             }
-            else
-            {
-                rerun = 0;
-            }
-        } while (rerun == 1);
-
+        }
     }
-    return input;
 }
