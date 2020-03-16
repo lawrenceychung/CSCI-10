@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+void selectionSort(int a[], int n); //declaring the sorting function
+
+int main()
+{
+    int a[] = {8,6,10,2,16,4,18,14}; //example array of numbers
+    int n = sizeof(a)/sizeof(a[0]); //finding the size of the array
+
+    selectionSort (a,n); //calling the soriting function
+    for (int i = 0; i < n; i++)
+    {
+        cout<<a[i]<<" "; //printing the sorted arry into the screen
+    }
+    cout<<endl;
+
+    return 0;
+
+}
+
+void selectionSort(int a[], int n) //sorting function
+{
+    int min;
+    for (int i = 0; i < n - 1; i ++)
+    {
+        min = i;
+        for (int j = i + 1; j < n; j++)
+        {
+            if (a[j] < a[min])//compares next element to the minimum
+            {
+                min = j; // assigns a new minimum if neccessary
+            }
+        }
+        int temp = a[i]; //swap the number from smallest to largest
+        a[i] = a[min];
+        a[min] = temp;
+    }
+}
