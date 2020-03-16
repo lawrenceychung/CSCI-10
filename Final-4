@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cctype>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string sentence;
+    int pos;
+
+    cout<< "Enter a sentence and end it with a sentence."<<endl; //asking for user input sentence
+    getline(cin, sentence); //taking in the whole line
+
+    pos = sentence.find("."); //finding where the first period is
+
+    sentence.erase(pos + 1, sentence.length()); //erasing everything after the period
+
+    for (int i = 0; i < sentence.length(); i++)
+    {
+        if (sentence[i] == ' ') //replacing all spaces with '*'
+        {
+            sentence[i] = '*';
+        }
+    }
+
+    ofstream out_stream;
+    out_stream.open("output.txt"); //opening a new output file
+
+    if(out_stream.fail()) //checking if the file opened correctly
+    {
+        cout<< "output file opening failed"<<endl;
+        exit(1);
+    }
+
+    out_stream << sentence <<endl; //inputing the sentence with '*' into the file
+
+    out_stream.close(); //closing the file
+
+    return 0;
+}
