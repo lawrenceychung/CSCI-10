@@ -1,0 +1,55 @@
+#include <iostream>
+#include <fstream>
+#include <algorithm>
+using namespace std;
+
+void selectionSort(int arr[], int count); //declaring function
+
+main()
+{
+    ifstream in_stream;
+    in_stream.open("input.txt"); //opening txt file
+
+    if(in_stream.fail()) //check to see of file opened correctly
+    {
+        cout<< "Input file opening failed"<<endl;
+        exit(1);
+    }
+
+    int arr[100];
+
+    int i = 0;
+    int count = 0;
+    while(in_stream >> arr[i]) //read in integers from the text file till the end into an array
+    {
+        i++;
+        count++;
+    }
+    in_stream.close(); //close the text file
+
+    selectionSort (arr, count); //call function to sort array from smallest to largest
+
+    cout<<"Max: "<<arr[count - 1]<<endl; //prints out the max
+    cout<<"Min: "<<arr[0]<<endl; //prints out the min
+
+    return 0;
+}
+
+void selectionSort(int arr[], int count) //sorting function
+{
+    int min;
+    for (int i = 0; i < count - 1; i ++)
+    {
+        min = i;
+        for (int j = i + 1; j < count; j++)
+        {
+            if (arr[j] < arr[min]) //compares next element to the minimum
+            {
+                min = j; // assigns a new minimum if neccessary
+            }
+        }
+        int temp = arr[i]; //swap the number from smallest to largest
+        arr[i] = arr[min];
+        arr[min] = temp;
+    }
+}
