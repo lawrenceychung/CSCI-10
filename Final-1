@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+int out_of_order (double a[], int n); //declaring funciton that determines whehter the array is in order
+
+int main()
+{
+    double a[] = {0.3,1.7,2.23,2.1,4.1,5.9}; //example array
+    int n = sizeof(a)/sizeof(a[0]); //finding the size of the array
+    int answer;
+
+    answer = out_of_order(a,n); //calling function
+
+    if (answer == -1)
+    {
+        cout<<"Everything is in order"<<endl; // printing that the array was in order
+    }
+    else
+    {
+        cout<<"It is not in order starting from position "<<answer<<endl; // printing that the array was not in order
+    }
+
+
+    return 0;
+}
+
+int out_of_order (double a[], int n)
+{
+    bool order;
+    int count;
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        if (a[i] <= a[i+1]) //testing whehter a element in the array and the element next are in order
+        {
+            order = true;
+        }
+        else
+        {
+            order = false;
+            return i;
+        }
+    }
+
+    if (order == true) //if the array is in order, return "-1"
+    {
+        return -1;
+    }
+
+}
