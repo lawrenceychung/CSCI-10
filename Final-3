@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+struct ShoeSize
+{
+    int size;
+};
+
+// Part 1
+struct ShoeType
+{
+    char style[100];
+    ShoeSize size;
+    double price;
+};
+
+void get_data(ShoeType& item);
+void setSalePrice(ShoeType& item, double discountRate);
+
+main()
+{
+    ShoeType item;
+
+    get_data(item);
+
+    cout <<item.size<<" "<<item.price<<endl;
+    return 0;
+}
+
+// Part 2
+void get_data(ShoeType& item)
+{
+    cout<<"Enter the shoe style"<<endl;
+    cin>>item.style;
+    cout<<"Enter the price of the shoe."<<endl;
+    cin>>item.price;
+}
+
+// Part 3
+void setSalePrice(ShoeType& item, double discountRate);
+{
+    discountPrice = discountRate * item.price;
+    item.price = discountRate;
+}
